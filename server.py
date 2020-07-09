@@ -25,7 +25,14 @@ def fulfillment_server():
 			'sessionId': session
 		}
 		response = requests.post(url=incoming_endpoint_url, data=request_data)
-		print('Response from incominf endpoint', response)
+		print('Handover Response from incoming endpoint', response)
+	elif intent_name == 'end':
+		request_data = {
+			'action': 'close-chat',
+			'sessionId': session
+		}
+		response = requests.post(url=incoming_endpoint_url, data=request_data)
+		print('Close Response from incoming endpoint', response)
 	elif intent_name == 'coronavirus.confirmed_cases':
 		return {
 				"fulfillmentMessages": [
